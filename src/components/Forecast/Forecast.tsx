@@ -9,7 +9,7 @@ import Paper from 'material-ui/Paper';
 import { LineChart, Line } from 'recharts';
 
 const styles: StyleRules = {
-  pvPanelList: {
+  forecast: {
     display: 'flex',
     flexWrap: 'wrap',
   },
@@ -62,7 +62,7 @@ const Forecast = ({ classes, className, pvPanels }: IFullProps) => {
   ];
 
   return (
-    <div className={classNames(className, classes.pvPanelList)}>
+    <div className={classNames(className, classes.forecast)}>
       <Paper className={classNames(classes.panel, className)} elevation={15}>
         <LineChart width={100} height={100} data={data}>
           <Line type="monotone" dataKey="uv" stroke="#8884d8" />

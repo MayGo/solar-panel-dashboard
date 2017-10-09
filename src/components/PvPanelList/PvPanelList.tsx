@@ -35,7 +35,7 @@ type IFullProps = IProps & IHocProps;
 const PvPanelList = ({ classes, className, pvPanels }: IFullProps) => (
   <div className={classNames(className, classes.pvPanelList)}>
     {pvPanels.map((pvPanel, i) => (
-      <PvPanel key={pvPanel.regionName} pvPanel={pvPanel} />
+      <PvPanel key={pvPanel.id} pvPanel={pvPanel} />
     ))}
   </div>
 );
