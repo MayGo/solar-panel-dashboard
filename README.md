@@ -21,6 +21,7 @@
 * Remove whitespace from Charts bottom
 * Make formatter for W/kW/mW
 * Fix test  
+* Solar Panel mock data should fluctuate realistically
 
 ## Screenshots
 
