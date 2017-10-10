@@ -8,7 +8,7 @@ import {
 import * as withQuery from 'with-query';
 import PlanetOsApi from '../../services/planetOsApi';
 
-const delayMs = 8 * 60 * 1000;
+const delayMs = 5 * 60 * 1000;
 
 function* bgSyncCloudCoverage() {
   while (true) {
@@ -46,7 +46,7 @@ function* bgSyncSolarActivity() {
         }),
       );
 
-      yield put(loadCloudCoverage(data.entries));
+      yield put(loadSolarActivity(data.entries));
 
       console.log('Loaded SolarActivity data:', data);
     } catch (err) {

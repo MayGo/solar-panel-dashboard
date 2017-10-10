@@ -1,9 +1,11 @@
 import { ResponseError } from './response-error';
 import 'whatwg-fetch';
 
+import config from '../env-local-config';
+
 export default class PlanetOsApi {
-  static apiUrl: any = 'http://api.planetos.com/v1/datasets/';
-  static apiKey: any = 'd50630c036da44cea6344bcbcc12963b';
+  static apiUrl: any = config.planetOsApiUrl;
+  static apiKey: any = config.apiKey;
 
   static setCfApiUrl(url: string) {
     PlanetOsApi.apiUrl = url;
