@@ -1,10 +1,10 @@
 import { call, put, fork, cancelled } from 'redux-saga/effects';
 import { delay } from 'redux-saga';
-import { loadPvPanels } from './reducers/pvPanel/pvPanelActions';
-import { returnPvOutputMock } from '../utils/testUtils';
+import { loadPvPanels } from '../reducers/pvPanel/pvPanelActions';
+import { returnPvOutputMock } from '../../utils/testUtils';
 
 function* bgSync() {
-  const delayMs = 1000;
+  const delayMs = 10000;
   try {
     while (true) {
       yield call(delay, delayMs);
