@@ -55,7 +55,7 @@ const Summary = ({ classes, className, pvPanels }: IFullProps) => {
     <div className={classNames(className, classes.pvPanelList)}>
       <Paper className={classNames(classes.panel, className)} elevation={15}>
         <Typography className={classes.energy} type="title">
-          {sum} kW
+          {sum / 1000} kW
         </Typography>
         <Typography type="body2">Total output</Typography>
       </Paper>
