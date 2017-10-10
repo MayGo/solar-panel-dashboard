@@ -1,16 +1,36 @@
-import { compose, createStore } from 'redux';
+import { compose, createStore, applyMiddleware } from 'redux';
 import rootReducer from './reducers';
-
-const devtools =
-  process.env.NODE_ENV === 'development'
-    ? // tslint:disable-next-line:no-string-literal
-      window['__REDUX_DEVTOOLS_EXTENSION__'] &&
-      window['__REDUX_DEVTOOLS_EXTENSION__']()
-    : undefined;
-const enhancer = compose(devtools);
+import createSagaMiddleware from 'redux-saga';
+import sagas from './sagas';
 
 export default function configureStore(initialState?: any) {
-  const store = createStore(rootReducer, initialState, enhancer);
+  console.log('Configuring store.');
+
+  const sagaMiddleware = createSagaMiddleware();
+  const middlewares = [sagaMiddleware];
+
+  const enhancers = [applyMiddleware(...middlewares)];
+
+  // If Redux DevTools Extension is installed use it, otherwise use Redux compose
+  const composeEnhancers =
+    process.env.NODE_ENV !== 'production' &&
+    typeof window === 'object' &&
+    (window as any).__REDUX_DEVTOOLS_EXTENSION_COMPOSE__
+      ? (window as any).__REDUX_DEVTOOLS_EXTENSION_COMPOSE__({
+          // TODO Try to remove when `react-router-redux` is out of beta,
+          // LOCATION_CHANGE should not be fired more than once after hot reloading
+          // Prevent recomputing reducers for `replaceReducer`
+          shouldHotReload: false,
+        })
+      : compose;
+
+  const store = createStore(
+    rootReducer,
+    initialState,
+    composeEnhancers(...enhancers),
+  );
+
+  sagaMiddleware.run(sagas);
 
   if (module.hot) {
     module.hot.accept('./reducers', () => {

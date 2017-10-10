@@ -3,7 +3,7 @@ import IPvPanel from '../../../@types/IPvPanel';
 
 export const PVPANEL__LOAD = 'PVPANEL/LOAD';
 
-export const add = (pvPanels: IPvPanel): IBaseAction => ({
+export const loadPvPanels = (pvPanels: IPvPanel[]): IBaseAction => ({
   type: PVPANEL__LOAD,
   payload: {
     pvPanels,

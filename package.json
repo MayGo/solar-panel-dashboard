@@ -5,26 +5,27 @@
   "author": "Maigo Erit <maigo.erit@gmail.com> (https://github.com/MayGo/)",
   "license": "MIT",
   "scripts": {
-    "start":
-      "concurrently --kill-others --names \"WEBPACK,ELECTRON\" -s first \"yarn start-dev-server\" \"yarn start-electron\"",
+    "start": "concurrently --kill-others --names \"WEBPACK,ELECTRON\" -s first \"yarn start-dev-server\" \"yarn start-electron\"",
     "start-electron": "cross-env NODE_ENV=development electron .",
     "start-dev-server": "webpack-dev-server --env.env=dev",
     "test-ci": "jest --coverage",
     "test-wcov": "jest --watch --coverage",
     "test-cov": "jest --coverage",
     "test": "jest --watch",
-
     "build": "webpack --env.env=prod",
     "build-dev": "webpack --env.env=dev",
-    "build-ci":
-      "yarn test && yarn lint && yarn build-dev && yarn build && codecov"
+    "build-ci": "yarn test && yarn lint && yarn build-dev && yarn build && codecov"
   },
   "jest": {
     "transform": {
       ".(ts|tsx)": "<rootDir>/node_modules/ts-jest/preprocessor.js"
     },
     "testRegex": "\\.test\\.(ts|tsx)$",
-    "moduleFileExtensions": ["ts", "tsx", "js"],
+    "moduleFileExtensions": [
+      "ts",
+      "tsx",
+      "js"
+    ],
     "mapCoverage": true,
     "testURL": "http://localhost"
   },
@@ -38,6 +39,7 @@
     "material-ui": "v1.0.0-beta.13",
     "material-ui-icons": "^1.0.0-beta.15",
     "material-ui-legacy": "npm:material-ui",
+    "moment": "^2.18.1",
     "react": "^16.0.0",
     "react-dom": "^16.0.0",
     "react-hot-loader": "next",
@@ -49,8 +51,10 @@
     "recompose": "^0.25.1",
     "redux": "^3.7.2",
     "redux-form": "^7.0.4",
+    "redux-saga": "^0.15.6",
     "typeface-roboto": "^0.0.35",
-    "uuid": "^3.1.0"
+    "uuid": "^3.1.0",
+    "with-query": "^1.0.2"
   },
   "devDependencies": {
     "@storybook/react": "^3.2.12",
