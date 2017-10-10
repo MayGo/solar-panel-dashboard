@@ -12,7 +12,6 @@ const delayMs = 8 * 60 * 1000;
 
 function* bgSyncCloudCoverage() {
   while (true) {
-    yield call(delay, delayMs);
     try {
       const data = yield call(
         PlanetOsApi.request,
@@ -30,12 +29,12 @@ function* bgSyncCloudCoverage() {
     } catch (err) {
       console.error('CloudCoverage data fetch error.', err);
     }
+    yield call(delay, delayMs);
   }
 }
 
 function* bgSyncSolarActivity() {
   while (true) {
-    yield call(delay, delayMs);
     try {
       const data = yield call(
         PlanetOsApi.request,
@@ -53,6 +52,7 @@ function* bgSyncSolarActivity() {
     } catch (err) {
       console.error('SolarActivity data fetch error.', err);
     }
+    yield call(delay, delayMs);
   }
 }
 
