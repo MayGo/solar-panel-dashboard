@@ -10,11 +10,11 @@
 ## Data
 
 * Solar Panel data is mocked
-** Vattage: It fluctuates between 200-250v
-** Woltage: Fluctuates between 20-800w
+* * Vattage: It fluctuates between 200-250v
+* * Woltage: Fluctuates between 20-800w
 * Weather forecast uses data from PlanetOs API
-** Visible  Diffuse Downward Solar Flux
-** Sky cloud coverage
+* * Visible  Diffuse Downward Solar Flux
+* * Sky cloud coverage
 
 ## TODO
 
