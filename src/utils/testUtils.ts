@@ -37,8 +37,8 @@ export const returnPvOutputMock = (): IPvPanel[] => {
   pvPanelNames.forEach(id => {
     const item: IPvPanel = {
       id,
-      voltage: getRandomArbitrary(50, 400),
-      wattage: getRandomArbitrary(10000, 50000),
+      voltage: getRandomArbitrary(200, 250),
+      wattage: getRandomArbitrary(20, 800),
     };
     items.push(item);
   });

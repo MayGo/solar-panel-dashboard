@@ -8,21 +8,18 @@ import IPvPanel from '../../@types/IPvPanel';
 
 const styles: StyleRulesCallback = theme => ({
   panel: {
-    width: 200,
     height: 70,
     padding: '10px !important',
     cursor: 'default',
     display: 'flex',
-    alignItems: 'center',
     justifyContent: 'space-between',
     flexDirection: 'column',
-    margin: 10,
     transition: 'all .2s ease-in-out',
   },
   currentOutput: {
     alignItems: 'stretch',
     display: 'flex',
-    justifyContent: 'space-evenly',
+    justifyContent: 'space-around',
   },
   hoverEffect: {
     '&:hover': {
@@ -39,6 +36,15 @@ const styles: StyleRulesCallback = theme => ({
     padding: 3,
     fontSize: '1.5em',
   },
+
+  small: {
+    fontSize: '0.5em',
+  },
+
+  title: {
+    fontSize: '1em',
+    textAlign: 'center',
+  },
 });
 
 interface IHocProps {
@@ -48,6 +54,8 @@ interface IHocProps {
     hoverEffect: string;
     voltage: string;
     wattage: string;
+    small: string;
+    title: string;
   };
 }
 
@@ -72,18 +80,21 @@ const PvPanel = ({
       { [classes.hoverEffect]: hoverEffect },
       className,
     )}
-    elevation={15}
+    elevation={1}
     {...rest}
   >
     <div className={classes.currentOutput}>
       <Typography className={classes.voltage} type="title">
-        {pvPanel.voltage} V
+        {pvPanel.voltage}
+        <span className={classes.small}>V</span>
       </Typography>
       <Typography className={classes.wattage} type="title">
-        {pvPanel.wattage} W
+        {pvPanel.wattage} <span className={classes.small}>W</span>
       </Typography>
     </div>
-    <Typography type="body2">{pvPanel.id}</Typography>
+    <Typography className={classes.title} type="body2">
+      {pvPanel.id}
+    </Typography>
   </Paper>
 );
 

@@ -13,7 +13,7 @@ const Theme: React.StatelessComponent<IProps> = ({ children, type }) => (
   <MuiThemeProvider theme={getTheme(type)}>{children}</MuiThemeProvider>
 );
 
-const getTheme = (type: IType = 'light') => {
+const getTheme = (type: IType = 'dark') => {
   return createMuiTheme({
     palette: {
       type,

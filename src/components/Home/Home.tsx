@@ -8,19 +8,26 @@ import * as ReactIntl from 'react-intl';
 import { compose } from 'recompose';
 import PvPanelListContainer from '../../containers/PvPanelListContainer/PvPanelListContainer';
 import SummaryContainer from '../../containers/SummaryContainer/SummaryContainer';
+import { Typography, Toolbar } from 'material-ui';
 
 const styles: StyleRulesCallback = theme => ({
   root: {
     minHeight: '100vh',
-    backgroundColor: theme.palette.background.paper,
+    backgroundColor: theme.palette.background.contentFrame,
+  },
+  logo: {
+    fontWeight: 200,
+    letterSpacing: 1,
+    flex: 1,
   },
   summary: {
     display: 'flex',
   },
-  pvPanelList: {
+  grid: {
     padding: 10,
-    height: 'calc(100vh - 68px)',
-    overflow: 'auto',
+  },
+  toolbar: {
+    minHeight: 48,
   },
 });
 
@@ -33,8 +40,10 @@ interface IProps {
 interface IHocProps {
   classes: {
     root: string;
-    pvPanelList: string;
+    logo: string;
+    grid: string;
     summary: string;
+    toolbar: string;
   };
   intl: ReactIntl.InjectedIntl;
 }
@@ -44,10 +53,14 @@ type IFullProps = IProps & IHocProps;
 const Home = ({ classes, intl }: IFullProps) => (
   <div className={classes.root}>
     <AppBar position="static">
-      <SummaryContainer className={classes.summary} />
+      <Toolbar className={classes.toolbar}>
+        <Typography type="title" color="inherit" className={classes.logo}>
+          Solar Panel Dashboard
+        </Typography>
+      </Toolbar>
     </AppBar>
-
-    <PvPanelListContainer className={classes.pvPanelList} />
+    <SummaryContainer className={classes.grid} />
+    <PvPanelListContainer className={classes.grid} />
   </div>
 );
 

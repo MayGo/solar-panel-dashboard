@@ -5,6 +5,7 @@ import Summary from '../../components/Summary/Summary';
 import Forecast from '../../components/Forecast/Forecast';
 import IStoreState from '../../store/IStoreState';
 import IPvPanelState from '../../store/reducers/pvPanel/IPvPanelState';
+import { Grid } from 'material-ui';
 
 interface IProps {
   className?: string;
@@ -19,8 +20,14 @@ type IFullProps = IProps & IHocProps;
 const SummaryContainer = ({ className, pvPanel }: IFullProps) => {
   return (
     <div className={className}>
-      <Summary pvPanels={pvPanel.all} />
-      <Forecast pvPanels={pvPanel.all} />
+      <Grid container spacing={8}>
+        <Grid item xs={12} sm={6} md={3} lg={2}>
+          <Summary pvPanels={pvPanel.all} />
+        </Grid>
+        <Grid item xs={12} sm={6} md={9} lg={10}>
+          <Forecast pvPanels={pvPanel.all} />
+        </Grid>
+      </Grid>
     </div>
   );
 };
