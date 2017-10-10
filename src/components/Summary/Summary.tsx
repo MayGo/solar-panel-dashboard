@@ -21,7 +21,11 @@ const styles: StyleRules = {
   energy: {
     height: 23,
     padding: 3,
-    fontSize: '1.5em',
+    fontSize: '2em',
+  },
+  small: {
+    fontSize: '0.5em',
+    paddingLeft: 5,
   },
 };
 
@@ -29,6 +33,7 @@ interface IHocProps {
   classes: {
     panel: string;
     energy: string;
+    small: string;
   };
 }
 
@@ -46,7 +51,8 @@ const Summary = ({ classes, pvPanels }: IFullProps) => {
   return (
     <Paper className={classes.panel} elevation={1}>
       <Typography className={classes.energy} type="title">
-        {sum / 1000} kW
+        {sum / 1000}
+        <span className={classes.small}>kW</span>
       </Typography>
       <Typography type="body2">Total output</Typography>
     </Paper>

@@ -29,15 +29,16 @@ const styles: StyleRulesCallback = theme => ({
   voltage: {
     height: 23,
     padding: 3,
-    fontSize: '1.5em',
+    fontSize: '2em',
   },
   wattage: {
     height: 23,
     padding: 3,
-    fontSize: '1.5em',
+    fontSize: '2em',
   },
 
   small: {
+    paddingLeft: 5,
     fontSize: '0.5em',
   },
 
@@ -89,7 +90,8 @@ const PvPanel = ({
         <span className={classes.small}>V</span>
       </Typography>
       <Typography className={classes.wattage} type="title">
-        {pvPanel.wattage} <span className={classes.small}>W</span>
+        {pvPanel.wattage}
+        <span className={classes.small}>W</span>
       </Typography>
     </div>
     <Typography className={classes.title} type="body2">
